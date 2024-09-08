@@ -53,4 +53,20 @@ router.patch('/:id', async (req, res) => {
   }
 });
 
+// Delete a specific alien by ID
+router.delete('/:id', async (req, res) => {
+  try {
+    const alien = await Alien.findById(req.params.id);
+    if (!alien) {
+      return res.status(404).send('Alien not found');
+    }
+    await alien.deleteOne();
+    res.send('Alien deleted');
+  } catch (err) {
+    res.send('Error ' + err);
+  }
+});
+
 module.exports = router;
+
+
