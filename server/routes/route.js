@@ -53,7 +53,7 @@ router.patch('/:id', async (req, res) => {
   }
 });
 
-// Delete a specific alien by ID
+// Delete an alien by ID
 router.delete('/:id', async (req, res) => {
   try {
     const alien = await Alien.findById(req.params.id);
